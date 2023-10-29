@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dbexpt?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    max-active: 20
+    max-wait: 60000
+    min-idle: 10
+    test-on-borrow: false
+    # release when size > min-idle && idle-time > 1800000ms(30min)
+    min-evictable-idle-time-millis: 1800000
+    # mysql default 8h release connection
+    # all connection will be released when idle-time > 7h
+    max-evictable-idle-time-millis: 25200000
+    time-between-eviction-runs-millis: 60000
+    test-while-idle: true
+    validation-query: select 1
+    pool-prepared-statements: true
+    max-open-prepared-statements: 20
+    filters: stat
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+mybatis:
+  mapper-locations: classpath:space/caoshd/*/mapper/*.xml
